@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --rh-red: #ee0000;
+  --rh-red-dark: #cc0000;
+  --page-bg: #f8fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--page-bg);
+  --color-foreground: #0f172a;
+  --font-sans: var(--font-text), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--foreground);
+  font-family: var(--font-text), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), var(--font-text), ui-sans-serif, system-ui,
+    sans-serif;
+}
+
+/* Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #ee0000;
+  outline-offset: 2px;
+}
+
+/**
+ * LinkifiedText: parent divs use text-slate-700 / red-tinted panels; these rules
+ * force links to stay visible and clickable (Tailwind + inheritance edge cases).
+ */
+.linkified a,
+.linkified a:visited {
+  color: #1d4ed8 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  pointer-events: auto;
+}
+.linkified a:hover {
+  color: #172554 !important;
+  background-color: rgba(219, 234, 254, 0.85);
+}

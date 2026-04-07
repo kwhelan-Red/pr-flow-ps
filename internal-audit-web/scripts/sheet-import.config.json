@@ -1,0 +1,7 @@
+{
+  "excludeColumnsExact": [],
+  "excludeColumnSubstrings": [
+    "auditee comment",
+    "completion status"
+  ]
+}

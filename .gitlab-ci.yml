@@ -1,0 +1,72 @@
+# Internal Audit Prep (Next.js) — for https://gitlab.cee.redhat.com
+#
+# Layout: this repo’s app lives in internal-audit-web/. If your GitLab project root
+# is only that app, remove the `cd internal-audit-web` / path prefixes below, or set
+# Settings → CI/CD → "CI/CD configuration file" and point at a copied config.
+#
+# Optional CI/CD variables (GitLab → Settings → CI/CD → Variables):
+#   NEXT_PUBLIC_SITE_URL — public HTTPS URL of the deployed app (metadata)
+#   ENABLE_HSTS — "true" to emit Strict-Transport-Security at build time (only if this service terminates TLS)
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+stages:
+  - verify
+  - image
+
+variables:
+  APP_DIR: internal-audit-web
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/$APP_DIR/.npm"
+
+verify:
+  stage: verify
+  image: node:20-alpine
+  interruptible: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+  cache:
+    key:
+      files:
+        - internal-audit-web/package-lock.json
+    paths:
+      - internal-audit-web/node_modules/
+      - internal-audit-web/.npm/
+  script:
+    - cd "$APP_DIR"
+    - npm ci
+    - npm run ci
+
+# Container Registry: registry on gitlab.cee.redhat.com is usually
+# $CI_REGISTRY / $CI_REGISTRY_IMAGE (enable in project Settings → General).
+# Requires a runner with Docker (privileged) or use your platform’s image build.
+build-image:
+  stage: image
+  image: docker:27-cli
+  services:
+    - docker:27-dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  interruptible: true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_REGISTRY_IMAGE
+      when: manual
+    - when: never
+  before_script:
+    - docker info
+    - echo "$CI_JOB_TOKEN" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+  script:
+    - |
+      docker build \
+        --build-arg NEXT_PUBLIC_SITE_URL="${NEXT_PUBLIC_SITE_URL:-}" \
+        --build-arg ENABLE_HSTS="${ENABLE_HSTS:-}" \
+        -f "$APP_DIR/Dockerfile" \
+        -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA" \
+        -t "$CI_REGISTRY_IMAGE:latest" \
+        "$APP_DIR"
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+    - docker push "$CI_REGISTRY_IMAGE:latest"

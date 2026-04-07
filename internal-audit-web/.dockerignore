@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.env*
+npm-debug.log*
+coverage
+.secrets
+*.md
+.DS_Store
