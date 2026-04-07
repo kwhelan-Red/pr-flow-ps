@@ -55,6 +55,19 @@ Sheet JSON is committed under `src/data/`. Refresh from CSV or Google Sheets usi
 
 Pipelines for **[gitlab.cee.redhat.com](https://gitlab.cee.redhat.com)** live in the **repository root**: `.gitlab-ci.yml` (next to `internal-audit-web/`).
 
+**Push this repo to GitLab** (after creating an empty project under your group; replace URL and branch if needed):
+
+```bash
+git remote add gitlab https://gitlab.cee.redhat.com/<your-group>/pr-flow-ps.git
+git push -u gitlab main
+```
+
+If `gitlab` remote already exists:
+
+```bash
+git push gitlab main
+```
+
 1. Create a project (or push this repo) on internal GitLab and ensure **shared or group runners** are available for `docker` / `node` jobs.
 2. **Merge requests and branch pushes** run `verify` (`npm ci` + `npm run ci`) inside `internal-audit-web/`.
 3. **Container image** job `build-image` is **manual** on the default branch and pushes to the project’s **GitLab Container Registry** (`$CI_REGISTRY_IMAGE`). Enable the registry under project **Settings → General**. The job needs a **Docker privileged** runner (Docker-in-Docker). If your org uses Kaniko, Tekton, or an external registry, replace that job with your standard pattern.
