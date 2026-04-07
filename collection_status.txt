@@ -1,0 +1,22 @@
+ESS, PIA, SIA Collection Status
+================================
+
+Field Locations Identified:
+- ESS: Compliance tab - "Security (ESS) assessment URL"
+- PIA: Compliance tab - "Privacy (PIA) assessment URL" + Data Privacy tab - "DPQ Complete"
+- SIA: Location to be determined
+
+Collection Pattern:
+1. Navigate to Business Application detail page
+2. Click Compliance tab
+3. Extract ESS and PIA assessment URLs
+4. Click Data Privacy tab  
+5. Extract DPQ Complete status
+6. Determine status from URL presence
+7. Navigate to next record
+
+Records: 1/283 collected (ATROPOS - ATRO-001)
+
+Status: Ready to continue collection. Browser automation navigation
+challenges encountered. Export method recommended for fastest results.
+

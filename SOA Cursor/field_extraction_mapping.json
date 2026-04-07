@@ -1,0 +1,17 @@
+{
+  "ESS Assessment URL": {
+    "ref": "ref-u30112qoah9",
+    "type": "textbox",
+    "tab": "Compliance"
+  },
+  "PIA Assessment URL": {
+    "ref": "ref-qbtx4c04po",
+    "type": "textbox",
+    "tab": "Compliance"
+  },
+  "DPQ Complete": {
+    "ref": "ref-00zcjgilhhit",
+    "type": "combobox",
+    "tab": "Data Privacy"
+  }
+}

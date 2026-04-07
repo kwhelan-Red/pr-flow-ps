@@ -1,0 +1,6 @@
+STI,CMDB ID,Application Name,SOA Applicable,SOA Status,ESS Self-Assessment Status,ESS Assessment URL,PIA Status,PIA Assessment URL,DPQ Complete,SIA Status,Criticality Tier,Data Classification,Install Status,Collection Method,Collection Date,Status
+AAP-001,AAP-001,,,,,,,,,,,,,ServiceNow Export,,Pending
+ANSI-001,ANSI-001,,,,,,,,,,,,,ServiceNow Export,,Pending
+ARR-002,ARR-002,,,,,,,,,,,,,ServiceNow Export,,Pending
+ARR-007,ARR-007,,,,,,,,,,,,,ServiceNow Export,,Pending
+ASRE-001,ASRE-001,,,,,,,,,,,,,ServiceNow Export,,Pending

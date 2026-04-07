@@ -1,0 +1,23 @@
+{
+  "ASRE-002": {
+    "applicationName": "ASRE Application 2",
+    "criticalityTier": "C1",
+    "essUrl": "empty value",
+    "piaUrl": "empty value",
+    "dpqComplete": "empty value"
+  },
+  "ASRE-005": {
+    "applicationName": "ASRE Application 5",
+    "criticalityTier": "C2",
+    "essUrl": "empty value",
+    "piaUrl": "empty value",
+    "dpqComplete": "empty value"
+  },
+  "ASRE-013": {
+    "applicationName": "ASRE Application 13",
+    "criticalityTier": "C1",
+    "essUrl": "empty value",
+    "piaUrl": "empty value",
+    "dpqComplete": "empty value"
+  }
+}

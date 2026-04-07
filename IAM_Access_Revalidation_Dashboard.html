@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IAM Access Revalidation – Compliance Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --danger: #f85149;
+      --danger-bg: rgba(248, 81, 73, 0.15);
+      --accent: #58a6ff;
+      --success: #3fb950;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+    .stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      min-width: 160px;
+    }
+    .stat-value { font-size: 1.75rem; font-weight: 700; }
+    .stat-value.danger { color: var(--danger); }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+    .noncompliant-section {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .noncompliant-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--danger);
+      margin: 0 0 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .noncompliant-section .id-list {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      word-break: break-all;
+    }
+    .noncompliant-section code {
+      background: var(--surface);
+      padding: 0.2em 0.5em;
+      border-radius: 4px;
+      font-size: 0.85em;
+      margin-right: 0.25em;
+      border: 1px solid var(--border);
+    }
+    .table-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: var(--text);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      color: var(--muted);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>IAM Access Revalidation – Compliance Dashboard</h1>
+    <p class="subtitle">Applications with Criticality C1 or Data Classification RH-Restricted(+PII) requiring annual access revalidation.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value danger">72</div>
+        <div class="stat-label">Non-compliant (review overdue or not completed)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">190</div>
+        <div class="stat-label">In policy scope (C1 or RH-Restricted(+PII))</div>
+      </div>
+    </div>
+
+    <section class="noncompliant-section">
+      <h2>Non-compliant CMDB application IDs (review not completed or date passed)</h2>
+      <div class="id-list"><code>001-034</code>, <code>3SCA-001</code>, <code>AISR-001</code>, <code>AOC-001</code>, <code>ARR-002</code>, <code>ASRE-005</code>, <code>ASSH-001</code>, <code>ATD-001</code>, <code>ATLS-004</code>, <code>ATLS-005</code>, <code>ATLS-006</code>, <code>ATRO-001</code>, <code>CLA-001</code>, <code>COH-001</code>, <code>CPHP-001</code>, <code>CPKB-001</code>, <code>CPKB-002</code>, <code>CPKB-003</code>, <code>CPPG-001</code>, <code>CSRE-001</code>, <code>DATG-001</code>, <code>DLAK-001</code>, <code>DMS-001</code>, <code>DMSG-001</code>, <code>DOCS-002</code>, <code>DPP-002</code>, <code>DRM-001</code>, <code>DSBX-001</code>, <code>DSSF-001</code>, <code>DYNA-001</code>, <code>EAP-007</code>, <code>EATR-001</code>, <code>FILE-003</code>, <code>FLAG-001</code>, <code>HAS-001</code>, <code>HIVE-001</code>, <code>HYDR-003</code>, <code>HYDR-004</code>, <code>JMA-001</code>, <code>KBPL-001</code>, <code>KUI-001</code>, <code>MOD-001</code>, <code>MONK-001</code>, <code>OCUI-002</code>, <code>OIA-004</code>, <code>ONEP-005</code>, <code>PERF-017</code>, <code>PRIM-002</code>, <code>QUBI-001</code>, <code>RHDH-007</code>, <code>RHOB-002</code>, <code>RHSM-002</code>, <code>RHSM-010</code>, <code>SAC-001</code>, <code>SFTP-003</code>, <code>SHIP-001</code>, <code>SPAC-001</code>, <code>SPAS-001</code>, <code>SPCL-001</code>, <code>SPCO-001</code>, <code>STAT-001</code>, <code>SUBG-016</code>, <code>SUBG-017</code>, <code>SUBG-018</code>, <code>SUSH-001</code>, <code>SUSH-003</code>, <code>TAPP-001</code>, <code>TSR-001</code>, <code>UNI-001</code>, <code>UZOO-001</code>, <code>XAKD-002</code>, <code>XRAY-001</code></div>
+    </section>
+
+    <section class="table-section">
+      <h2>Non-compliant applications – detail</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Application ID</th><th>Name</th><th>Owned by</th><th>Delegate</th><th>Status</th><th>Criticality Tier</th><th>Data classification</th><th>Access Revalidation Frequency</th><th>Next Access Revalidation Review Date</th></tr></thead>
+          <tbody><tr><td>001-034</td><td>nm-mlops</td><td>Alexandre Marques</td><td>Chibu Ukachi</td><td>Implementing</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>3SCA-001</td><td>3scale SaaS</td><td>Sajeel Irkal</td><td>Rael Garcia Arnes</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>AISR-001</td><td>AI assisted Supportability Review</td><td>Pranita Ghole</td><td>Saurav Chandra</td><td>Implementing</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>AOC-001</td><td>GitHub Action: Easy Button</td><td>Nathan Weatherly</td><td>Iftikhar Khan</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ARR-002</td><td>RHEL Gating (Legacy)</td><td>Chris Kelley</td><td>Michal Fabik</td><td>In Production</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ASRE-005</td><td>vault.devshift.net</td><td>Aaron Weitekamp</td><td>Guillaume Pont</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>2024-07-14</td></tr>
+<tr><td>ASSH-001</td><td>Konflux Self Hosted Infrastructure (staging and production)</td><td>Gal Ben Haim</td><td>Hugo Ares</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ATD-001</td><td>Attachment Diagnostics</td><td>Pranita Ghole</td><td>Saurav Chandra</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ATLS-004</td><td>Jira Service Management Cloud</td><td>Jay Greguske</td><td>Abby Domanowski</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ATLS-005</td><td>Atlassian Guard</td><td>Jay Greguske</td><td>Abby Domanowski</td><td>Implementing</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ATLS-006</td><td>Atlassian Rovo</td><td>Jay Greguske</td><td>Abby Domanowski</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ATRO-001</td><td>ATROPOS</td><td>David Sariel</td><td>Adrian Fusco Arnejo</td><td>Implementing</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>CLA-001</td><td>Command Line Assistant</td><td>Eleana Panayiotou</td><td>Major Hayden</td><td>Implementing</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>COH-001</td><td>Certification Operations Hub</td><td>Sushilkumar Deshmukh</td><td>Sumit Ridhal</td><td>In Production</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>2024-07-15</td></tr>
+<tr><td>CPHP-001</td><td>Customer Portal Homepage</td><td>Tyler Martin</td><td>Chase Gatyas</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>CPKB-001</td><td>Access.redhat.com Drupal Kbase</td><td>Travis McTighe</td><td>Edward Chan</td><td>Implementing</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Semi-annually</td><td>—</td></tr>
+<tr><td>CPKB-002</td><td>Customer Portal Knowledgebase  Front End</td><td>Tyler Martin</td><td>Rob Lahoda</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>CPKB-003</td><td>Customer Portal KBase Salesforce-Drupal Middleware</td><td>Travis McTighe</td><td>Edward Chan</td><td>Implementing</td><td>C1</td><td>RH-Internal</td><td>Annually</td><td>—</td></tr>
+<tr><td>CPPG-001</td><td>Customer Portal Private Groups</td><td>Travis McTighe</td><td>April Sides</td><td>In Production</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>CSRE-001</td><td>Glitchtip</td><td>Aaron Weitekamp</td><td>Guillaume Pont</td><td>Implementing</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>DATG-001</td><td>datagrepper</td><td>Mike Bonnet</td><td>Mike Bonnet</td><td>In Production</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>DLAK-001</td><td>DXP Data lake</td><td>Erik Newby</td><td>Rob Coffman</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>DMS-001</td><td>Dead Man's Snitch</td><td>Amber Krawczyk</td><td>Dustin Row</td><td>In Production</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>2025-06-28</td></tr>
+<tr><td>DMSG-001</td><td>messagebusd</td><td>Mike Bonnet</td><td>Mike Bonnet</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>DOCS-002</td><td>Product Documentation</td><td>Kyle Buchanan</td><td>Kishori Patil</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>DPP-002</td><td>DXP Product Platform</td><td>Travis McTighe</td><td>April Sides</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>DRM-001</td><td>Digital Roadmap</td><td>Sam Doran</td><td>Christopher Duryee</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>DSBX-001</td><td>Developer Sandbox</td><td>Michael Kleinhenz</td><td>Panagiotis Georgiadis</td><td>Limited Service</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>DSSF-001</td><td>Red Hat Design System Static Files</td><td>Mark Caron</td><td>Luke Dary</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>DYNA-001</td><td>Dynatrace</td><td>Aaron Weitekamp</td><td>Guillaume Pont</td><td>In Production</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>EAP-007</td><td>eap-prod-jenkins-master</td><td>Ettore Leandro Tognoli</td><td>Vladimir Dosoudil</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>EATR-001</td><td>Easy Agile TeamRhythm</td><td>Sagar Mahajan</td><td>Amol Dongare</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>FILE-003</td><td>mwc-filemgmt</td><td>Rob Coffman</td><td>Mark Austin</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>FLAG-001</td><td>semaphore-flags</td><td>Jiri Kriz</td><td>John Casey</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>HAS-001</td><td>Hybrid Application Service</td><td>Cathal O'Connor</td><td>Krunoslav Pavic</td><td>Limited Service</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>HIVE-001</td><td>HIVE</td><td>Mike Worthington</td><td>Eric Fried</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>HYDR-003</td><td>Hydra Bridge</td><td>Devayush Bajaj</td><td>Ankit Bajpai</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>HYDR-004</td><td>Hydra Attachments</td><td>Chaitanya Gujarathi</td><td>Ankit Bajpai</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>JMA-001</td><td>Jira Mobile App</td><td>Abby Domanowski</td><td>Stacey Hamilton</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>KBPL-001</td><td>Konflux Build Pipeline</td><td>Ladislav Kolacek</td><td>Mykola Morhun</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>KUI-001</td><td>Konflux UI</td><td>Adam Ormandy</td><td>Sahil Budhwar</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>MOD-001</td><td>Manager On Duty</td><td>Pravin Pareekh</td><td>Homa Seyed Alshohadaei</td><td>In Production</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>MONK-001</td><td>Monk</td><td>Thibault Guittet</td><td>Thibault Guittet</td><td>Pilot</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>OCUI-002</td><td>OCMUI</td><td>Joseph Caiani</td><td>Jayakrishnan Mekkattillam</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>OIA-004</td><td>ObsInt Dataverse Lightspeed</td><td>Martin Bacovsky</td><td>Tomas Sedlacek</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>ONEP-005</td><td>One Platform Notifications Service</td><td>Nilesh Patil</td><td>Mayur Deshmukh</td><td>In Production</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>PERF-017</td><td>AWS account to run Konflux perf&amp;scale tests</td><td>Pradeep Surisetty</td><td>Jan Hutar</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>PRIM-002</td><td>Primer</td><td>Tyler Martin</td><td>Matt Smith</td><td>In Production</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>QUBI-001</td><td>qubip-demo</td><td>Dmitry Belyavskiy</td><td>Matej Tyc</td><td>Pilot</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>RHDH-007</td><td>rhdh-sidekick</td><td>Rob Taniwa</td><td>Marcel Hild</td><td>Pilot</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>RHOB-002</td><td>RHOBS for ROSA</td><td>Daniel Mohr</td><td>Moad Zardab</td><td>Implementing</td><td>C1</td><td>RH-Restricted</td><td>Annually</td><td>—</td></tr>
+<tr><td>RHSM-002</td><td>subscription-admin</td><td>Gregg Tanzillo</td><td>Henning Seljenes</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>RHSM-010</td><td>Subscription Watch</td><td>Barnaby Court</td><td>Lindsey Burnett</td><td>In Production</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SAC-001</td><td>Start a call</td><td>Pravin Pareekh</td><td>Jordan Eudy</td><td>In Production</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SFTP-003</td><td>IT Marketing SFTP - Filefly Storage</td><td>Steve Newsted</td><td>Jeffery Bagirimvano</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SHIP-001</td><td>ship-help slack bot</td><td>Justin Pierce</td><td>Stephen Goeddel</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SPAC-001</td><td>SPAship Access.redhat.com</td><td>Kyle Buchanan</td><td>Daniel Faucette</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>SPAS-001</td><td>SPAship</td><td>Nilesh Patil</td><td>Soumyadip Chowdhury</td><td>In Production</td><td>C1</td><td>RH-Internal</td><td>Annually</td><td>2024-06-22</td></tr>
+<tr><td>SPCL-001</td><td>SPAship (Search) cloud.redhat.com</td><td>Diwanshi Gadgil</td><td>Daniel Faucette</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>SPCO-001</td><td>SPAship (Search) connect.redhat.com</td><td>Diwanshi Gadgil</td><td>Daniel Faucette</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>STAT-001</td><td>Statuspage IO status.redhat.com</td><td>Steve Newsted</td><td>Rob Coffman</td><td>In Production</td><td>C1</td><td>RH-Public</td><td>Annually</td><td>—</td></tr>
+<tr><td>SUBG-016</td><td>Learning Path Subgraph</td><td>Nilesh Patil</td><td>Ishan Show</td><td>Implementing</td><td>C1</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SUBG-017</td><td>Knowledge Base Subgraph</td><td>Nilesh Patil</td><td>Ishan Show</td><td>Implementing</td><td>C2</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SUBG-018</td><td>Routing Lookup Subgraph</td><td>Edward Chan</td><td>Didi Ohri</td><td>Implementing</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>SUSH-001</td><td>Support Shell</td><td>Matt Goodwin</td><td>Ryan Blakley</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>SUSH-003</td><td>Project Sunny</td><td>Matt Goodwin</td><td>Eric Jones</td><td>In Production</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>TAPP-001</td><td>rhtap-planning</td><td>Jeff Burke</td><td>Ralph Bean</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>TSR-001</td><td>Phased Gates Technical Supportability Review</td><td>Sachin Kharat</td><td>Carsten Lichy-Bittendorf</td><td>Limited Service</td><td>C1</td><td></td><td>Annually</td><td>—</td></tr>
+<tr><td>UNI-001</td><td>unifai</td><td>Omri Sabach</td><td>Saar Fireshtein</td><td>Implementing</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>UZOO-001</td><td>UserTesting Technologies</td><td>Amber Asaro</td><td>Amber Asaro</td><td>In Production</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Semi-annually</td><td>—</td></tr>
+<tr><td>XAKD-002</td><td>XE AI KCS Drafting API</td><td>Ankit Gadgil</td><td>Ryan Mullett</td><td>Implementing</td><td>C3</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr>
+<tr><td>XRAY-001</td><td>XRAY Test Case Managment</td><td>Shea DeAntonio</td><td>Sagar Mahajan</td><td>Archived</td><td>C4</td><td>RH-Restricted(+PII)</td><td>Annually</td><td>—</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

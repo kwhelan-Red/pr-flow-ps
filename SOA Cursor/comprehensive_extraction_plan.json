@@ -1,0 +1,111 @@
+{
+  "total_stis": 114,
+  "method": "Browser Automation with DOM Value Reading",
+  "base_url": "https://redhat.service-now.com",
+  "extraction_steps": {
+    "for_each_sti": [
+      {
+        "step": 1,
+        "action": "Navigate to Business Application list",
+        "url_pattern": "https://redhat.service-now.com/cmdb_ci_business_app_list.do?sysparm_query=application_id={sti}"
+      },
+      {
+        "step": 2,
+        "action": "Click on the Business Application record",
+        "note": "Click first matching record"
+      },
+      {
+        "step": 3,
+        "action": "Extract main page fields",
+        "fields": [
+          {
+            "name": "Application Name",
+            "method": "Read heading or name field"
+          },
+          {
+            "name": "Criticality Tier",
+            "method": "Read combobox selected value"
+          },
+          {
+            "name": "Data Classification",
+            "method": "Read field value"
+          },
+          {
+            "name": "Install Status",
+            "method": "Read status field"
+          },
+          {
+            "name": "SOA Applicable",
+            "method": "Read checkbox or field value"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Click Compliance tab",
+        "tab_ref": "ref-3yd4cee3myp or search for 'Compliance'"
+      },
+      {
+        "step": 5,
+        "action": "Extract Compliance tab fields",
+        "fields": [
+          {
+            "name": "ESS Assessment URL",
+            "method": "Read textbox.value or link.href"
+          },
+          {
+            "name": "PIA Assessment URL",
+            "method": "Read textbox.value or link.href"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "action": "Click Data Privacy tab",
+        "tab_ref": "ref-96fck0cpl67 or search for 'Data Privacy'"
+      },
+      {
+        "step": 7,
+        "action": "Extract Data Privacy tab fields",
+        "fields": [
+          {
+            "name": "DPQ Complete",
+            "method": "Read combobox selected option"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "action": "Search for SIA in other tabs",
+        "fields": [
+          {
+            "name": "SIA Status",
+            "method": "Search tabs for SIA field"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "action": "Update CSV record",
+        "note": "Replace 'empty value' with actual extracted values"
+      },
+      {
+        "step": 10,
+        "action": "Continue to next STI"
+      }
+    ]
+  },
+  "empty_value_marker": "empty value",
+  "stis": [
+    "AAP-001",
+    "ANSI-001",
+    "ARR-002",
+    "ARR-007",
+    "ASRE-001",
+    "ASRE-002",
+    "ASRE-005",
+    "ASRE-013",
+    "ASSH-001",
+    "ATLA-001"
+  ]
+}

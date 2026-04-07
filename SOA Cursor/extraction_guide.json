@@ -1,0 +1,54 @@
+{
+  "method": "Browser Automation - Direct DOM Value Reading",
+  "note": "Empty values should be marked as 'empty value' not left blank",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Ensure Compliance tab is open",
+      "check": "Tab 'Compliance' should be active"
+    },
+    {
+      "step": 2,
+      "action": "Read ESS Assessment URL",
+      "method": "Find textbox near label 'Security (ESS) assessment URL', read .value property",
+      "ref": "ref-u30112qoah9",
+      "empty_value": "If empty, mark as 'empty value'"
+    },
+    {
+      "step": 3,
+      "action": "Read PIA Assessment URL",
+      "method": "Find textbox near label 'Privacy (PIA) assessment URL', read .value property",
+      "ref": "ref-qbtx4c04po",
+      "empty_value": "If empty, mark as 'empty value'"
+    },
+    {
+      "step": 4,
+      "action": "Click Data Privacy tab",
+      "check": "Tab should switch to 'Data Privacy'"
+    },
+    {
+      "step": 5,
+      "action": "Read DPQ Complete",
+      "method": "Find combobox/select near label 'DPQ Complete', read selected option value",
+      "ref": "ref-00zcjgilhhit",
+      "empty_value": "If empty or '-- None --', mark as 'empty value'"
+    },
+    {
+      "step": 6,
+      "action": "Extract other fields from main page",
+      "fields": [
+        "Application Name",
+        "Criticality Tier",
+        "Data Classification",
+        "Install Status"
+      ],
+      "empty_value": "If empty, mark as 'empty value'"
+    },
+    {
+      "step": 7,
+      "action": "Populate CSV with extracted values",
+      "output": "soa_data_all_stis.csv",
+      "note": "All empty values should be marked as 'empty value'"
+    }
+  ]
+}

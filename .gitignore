@@ -1,0 +1,12 @@
+.DS_Store
+.cursor/
+https:/
+**/__pycache__/
+*.py[cod]
+*.xlsx~
+~$*.xlsx
+.venv/
+venv/
+.env
+*.log
+dashboard.pid

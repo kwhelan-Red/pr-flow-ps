@@ -1,0 +1,41 @@
+{
+  "instructions": "Fill in JSON data for each STI",
+  "format": "Each STI should have: applicationName, criticalityTier, essUrl, piaUrl, dpqComplete",
+  "stis": {
+    "AAP-001": {
+      "applicationName": "empty value",
+      "criticalityTier": "empty value",
+      "essUrl": "empty value",
+      "piaUrl": "empty value",
+      "dpqComplete": "empty value"
+    },
+    "ANSI-001": {
+      "applicationName": "empty value",
+      "criticalityTier": "empty value",
+      "essUrl": "empty value",
+      "piaUrl": "empty value",
+      "dpqComplete": "empty value"
+    },
+    "ARR-002": {
+      "applicationName": "empty value",
+      "criticalityTier": "empty value",
+      "essUrl": "empty value",
+      "piaUrl": "empty value",
+      "dpqComplete": "empty value"
+    },
+    "ARR-007": {
+      "applicationName": "empty value",
+      "criticalityTier": "empty value",
+      "essUrl": "empty value",
+      "piaUrl": "empty value",
+      "dpqComplete": "empty value"
+    },
+    "ASRE-001": {
+      "applicationName": "empty value",
+      "criticalityTier": "empty value",
+      "essUrl": "empty value",
+      "piaUrl": "empty value",
+      "dpqComplete": "empty value"
+    }
+  }
+}

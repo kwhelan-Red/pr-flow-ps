@@ -1,0 +1,26 @@
+{
+  "collection_started": "2026-01-15T12:15:00",
+  "total_records": 283,
+  "records_collected": 1,
+  "collection_method": "Browser automation - Compliance and Data Privacy tabs",
+  "field_locations": {
+    "ESS": "Compliance tab - Security (ESS) assessment URL",
+    "PIA": "Compliance tab - Privacy (PIA) assessment URL + Data Privacy tab - DPQ Complete (Yes/No/None)",
+    "SIA": "To be determined"
+  },
+  "records": [
+    {
+      "Record Number": 1,
+      "CMDB ID": "ATRO-001",
+      "Application Name": "ATROPOS",
+      "ESS Self-Assessment Status": "Checking URL field",
+      "ESS Assessment URL": "To be extracted",
+      "PIA Status": "DPQ Complete = No",
+      "PIA Assessment URL": "To be extracted",
+      "DPQ Complete": "No",
+      "SIA Status": "Not found yet",
+      "Collected At": "2026-01-16T11:08:00",
+      "Notes": "Compliance and Data Privacy tabs accessed. DPQ Complete = No. ESS and PIA URLs need extraction. SIA location still being searched."
+    }
+  ]
+}

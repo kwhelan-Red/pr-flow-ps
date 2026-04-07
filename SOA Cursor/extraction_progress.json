@@ -1,0 +1,25 @@
+{
+  "extracted": {
+    "AAP-001": {
+      "results": {
+        "applicationName": "Business Applications",
+        "criticalityTier": "empty value",
+        "essUrl": "empty value",
+        "piaUrl": "empty value",
+        "dpqComplete": "empty value"
+      },
+      "timestamp": "2026-01-26T17:05:30.273636"
+    },
+    "ANSI-001": {
+      "results": {
+        "applicationName": "Business Applications",
+        "criticalityTier": "empty value",
+        "essUrl": "empty value",
+        "piaUrl": "empty value",
+        "dpqComplete": "empty value"
+      },
+      "timestamp": "2026-01-26T15:31:24.036776"
+    }
+  },
+  "failed": []
+}

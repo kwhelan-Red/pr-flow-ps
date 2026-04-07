@@ -1,0 +1,25 @@
+{
+  "CMDB ID": "ATRO-001",
+  "Application Name": "ATROPOS",
+  "ESS Self-Assessment": {
+    "Field Location": "Compliance tab - Security (ESS) assessment URL",
+    "URL Present": "Checking...",
+    "Status": "To be determined from URL presence"
+  },
+  "PIA": {
+    "Field Location": "Compliance tab - Privacy (PIA) assessment URL + Data Privacy tab - DPQ Complete",
+    "URL Present": "Checking...",
+    "DPQ Complete": "Checking...",
+    "Status": "To be determined"
+  },
+  "SIA": {
+    "Field Location": "To be determined",
+    "Status": "Not found yet"
+  },
+  "Collected At": "2026-01-16T11:06:00",
+  "Notes": "Compliance tab successfully accessed. ESS and PIA assessment URL fields visible. Checking Data Privacy tab for DPQ Complete status."
+}
+
+
+
+

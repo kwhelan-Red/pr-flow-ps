@@ -1,0 +1,4 @@
+Application ID,Application Name,SOA Applicable,SOA Status,Security (ESS) assessment URL,Privacy (PIA) assessment URL,DPQ Complete,Service Impact Assessment,Criticality Tier,Data Classification,Install Status
+ATRO-001,ATROPOS,true,Pending,https://example.com/ess1,https://example.com/pia1,No,Complete,C1,RH-RESTRICTED,Active
+RSIG-001,Red Hat Signature,true,Approved,,https://example.com/pia2,Yes,Pending,C2,RH-INTERNAL,Active
+WINS-001,Windows Service,true,In Progress,https://example.com/ess3,,No,Not Started,C3,RH-PUBLIC,Active
